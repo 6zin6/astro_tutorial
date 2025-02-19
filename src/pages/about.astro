@@ -1,18 +1,56 @@
 ---
+import { literal } from 'astro:schema';
 import Layout from '../layouts/Layout.astro';
+
+interface PageData {
+    title: string;
+    identity: {
+        firstName: string;
+        country: string;
+        occupation: string;
+        hobbies: string[];
+    };
+    skills: string[];
+}
+
+const pageData: PageData = {
+    title: "私たちについて",
+    identity: {
+        firstName: "Takumu",
+        country: "日本",
+        occupation: "エンジニア",
+        hobbies: ["写真", "読書", "プログラミング"]
+    },
+    skills: ["HTML", "CSS", "JavaScript", "React", "Astro", "ドキュメントの執筆"]
+}
+
+const {title, identity, skills} = pageData;
 ---
 
 
-<Layout>
+<Layout pageTitle="私について">
     <a href="/">ホーム</a>
     <a href="/about/">概要</a>
     <a href="/blog/">ブログ</a>
 
     <h1>私のAstroサイト</h1>
-    <h1>私について</h1>
+    <h1>{title}</h1>
     <h2>... そして私の新しいAstroサイトについて！</h2>
 
     <p>私はAstroの入門チュートリアルを進めています。これは私のウェブサイトの2番目のページで、自分で作った初めてのページです！</p>
 
     <p>このサイトはチュートリアルを進めるにつれて更新されていきます。定期的にチェックして、私の旅の様子を見に来てください！</p>
+
+    <p>以下は私に関する幾つかの事実です。</p>
+    <ul>
+        <li>私の名前は{identity.firstName}です。</li>
+        <li>{identity.country}に住んでおり、{identity.occupation}として働いています。</li>
+        {identity.hobbies.length >= 2 &&
+            <li>私の２つの趣味は{identity.hobbies[0]}と{identity.hobbies[1]}です。</li>
+        }
+    </ul>
+    <p>私のスキルは以下の通りです。</p>
+    <ul>
+        {skills.map((skill) => <li>{skill}</li>)}
+    </ul>
 </Layout>
