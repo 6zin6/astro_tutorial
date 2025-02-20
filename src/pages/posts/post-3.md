@@ -1,6 +1,5 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-pageTitle: '私の3番目のブログ記事'
 title: 私の3番目のブログ記事
 author: Astro学習者
 description: "上手くいかないことがありましたが、コミュニティに質問して助けてもらいました！"

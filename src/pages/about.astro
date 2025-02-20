@@ -1,9 +1,6 @@
 ---
 import { literal } from 'astro:schema';
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
 
 interface PageData {
     title: string;
@@ -51,7 +48,6 @@ const textCase: string = "uppercase";
 </style>
 
 <Layout pageTitle="私について">
-    <Header />
 
     <h1>私のAstroサイト</h1>
     <h1>{title}</h1>
@@ -78,5 +74,4 @@ const textCase: string = "uppercase";
     {finished && <p>I am happy to be learning Astro! Astroを学べて幸せです！</p>}
     {goal === 3 ? <p>My goal is to finish in 3 days. 3日で終えるのが目標です。</p> : <p>My goal is not 3 days. 3日が目標ではありません。</p>}
 
-    <Footer />
 </Layout>
